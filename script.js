@@ -83,7 +83,9 @@ submitBtn.addEventListener('click', async () => {
 const isInvasive = invasiveSpecies.hasOwnProperty(plantData.plant_name);
 if (isInvasive) {
 
-
+    const invasiveValue = invasiveSpecies[plantData.plant_name];
+    invasiveStatus.textContent = `Invasive status: ${invasiveValue}`;
+    
 const warningSign = document.createElement('span');
 warningSign.textContent = '⚠️';
 warningSign.style.fontSize = '1.5em';
@@ -96,8 +98,6 @@ warningSign.style.color = 'orange';
 warningSign.style.color = 'red';
 }
 
-const invasiveValue = invasiveSpecies[plantData.plant_name];
-invasiveStatus.textContent = `Invasive status: ${invasiveValue}`;
 
 }
 else {
