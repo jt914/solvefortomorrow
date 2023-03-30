@@ -143,14 +143,28 @@
     console.log('Invasive species list:', invasiveSpecies);
 console.log('Plant name:', plantData.plant_name);
 
-    if (isInvasive) {
-        const invasiveValue = invasiveSpecies[plantData.plant_name];
-        const invasiveInfo = document.createElement('p');
-        invasiveInfo.className = 'card-text';
-        invasiveInfo.textContent = `Invasive status: ${invasiveValue}`;
-        result.querySelector('.card-body').appendChild(invasiveInfo);
-        console.log("working");
+if (isInvasive) {
+    const invasiveValue = invasiveSpecies[plantData.plant_name];
+    const invasiveInfo = document.createElement('p');
+    invasiveInfo.className = 'card-text';
+
+    const warningSign = document.createElement('span');
+    warningSign.textContent = '⚠️';
+    warningSign.style.fontSize = '1.5em';
+
+    if (invasiveValue.toLowerCase() === 'low') {
+        warningSign.style.color = 'yellow';
+    } else if (invasiveValue.toLowerCase() === 'medium') {
+        warningSign.style.color = 'orange';
+    } else if (invasiveValue.toLowerCase() === 'high') {
+        warningSign.style.color = 'red';
     }
+
+    invasiveInfo.appendChild(warningSign);
+    invasiveInfo.insertAdjacentText('beforeend', ` Invasive status: ${invasiveValue}`);
+    result.querySelector('.card-body').appendChild(invasiveInfo);
+}
+
         });
     </script>
 </body>
