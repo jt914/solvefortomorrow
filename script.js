@@ -81,13 +81,10 @@ submitBtn.addEventListener('click', async () => {
 
     const invasiveSpecies = await fetchInvasiveSpecies();
 const isInvasive = invasiveSpecies.hasOwnProperty(plantData.plant_name);
-console.log('Invasive species list:', invasiveSpecies);
-console.log('Plant name:', plantData.plant_name);
-
 if (isInvasive) {
-const invasiveValue = invasiveSpecies[plantData.plant_name];
-const invasiveInfo = document.createElement('p');
-invasiveInfo.className = 'card-text';
+    const invasiveValue = invasiveSpecies[plantData.plant_name];
+    invasiveStatus.textContent = `Invasive status: ${invasiveValue}`;
+
 
 const warningSign = document.createElement('span');
 warningSign.textContent = '⚠️';
@@ -107,6 +104,9 @@ invasiveInfo.insertAdjacentText('beforeend', ` Invasive status: ${invasiveValue}
 // Insert the invasive status right after the plant name
 const cardBody = result.querySelector('.card-body');
 cardBody.insertBefore(invasiveInfo, plantName.nextSibling);
+}
+else {
+    invasiveStatus.textContent = '';
 }
 
 
