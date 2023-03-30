@@ -66,19 +66,22 @@
         const preview = document.getElementById('preview');
         const loading = document.getElementById('loading');
         const result = document.getElementById('result');
+        
         async function fetchInvasiveSpecies() {
-        const response = await fetch('invasive_species.csv');
-         const csvData = await response.text();
-        const rows = csvData.split('\n').slice(1);
-        const invasiveSpecies = {};
-        rows.forEach(row => {
+            const response = await fetch('invasive_species.csv');
+            const csvData = await response.text();
+            const rows = csvData.split('\n').slice(1);
+            const invasiveSpecies = {};
 
-            const [name, value] = row.split('\t');
-            invasiveSpecies[name.trim()] = value.trim();
-        });
+            rows.forEach(row => {
+                const [name, value] = row.split('\t');
+                if (name && value) {
+                    invasiveSpecies[name.trim()] = value.trim();
+                }
+            });
 
-    return invasiveSpecies;
-}
+            return invasiveSpecies;
+        }
 
 
         function imageToBase64(img) {
