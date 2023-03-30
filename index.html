@@ -66,6 +66,20 @@
         const preview = document.getElementById('preview');
         const loading = document.getElementById('loading');
         const result = document.getElementById('result');
+        async function fetchInvasiveSpecies() {
+        const response = await fetch('invasive_species.csv');
+         const csvData = await response.text();
+        const rows = csvData.split('\n').slice(1);
+        const invasiveSpecies = {};
+        rows.forEach(row => {
+
+            const [name, value] = row.split('\t');
+            invasiveSpecies[name.trim()] = value.trim();
+        });
+
+    return invasiveSpecies;
+}
+
 
         function imageToBase64(img) {
     return new Promise((resolve) => {
@@ -101,6 +115,16 @@
                 alert('Please upload an image');
                 return;
             }
+
+            const invasiveSpecies = await fetchInvasiveSpecies();
+    const isInvasive = invasiveSpecies.hasOwnProperty(plantData.plant_name);
+    if (isInvasive) {
+        const invasiveValue = invasiveSpecies[plantData.plant_name];
+        const invasiveInfo = document.createElement('p');
+        invasiveInfo.className = 'card-text';
+        invasiveInfo.textContent = `Invasive status: ${invasiveValue}`;
+        result.querySelector('.card-body').appendChild(invasiveInfo);
+    }
 
             submitBtn.disabled = true;
             loading.style.display = 'block';
