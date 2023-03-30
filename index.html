@@ -162,8 +162,12 @@ if (isInvasive) {
 
     invasiveInfo.appendChild(warningSign);
     invasiveInfo.insertAdjacentText('beforeend', ` Invasive status: ${invasiveValue}`);
-    result.querySelector('.card-body').appendChild(invasiveInfo);
+
+    // Insert the invasive status right after the plant name
+    const cardBody = result.querySelector('.card-body');
+    cardBody.insertBefore(invasiveInfo, plantName.nextSibling);
 }
+
 
         });
     </script>
