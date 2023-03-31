@@ -9,7 +9,7 @@ const loading = document.getElementById('loading');
 const result = document.getElementById('result');
 
 async function fetchInvasiveSpecies() {
-const response = await fetch('invasive_species.csv');
+const response = await fetch('/data/invasive_species.csv');
 const csvData = await response.text();
 const rows = csvData.split('\n').slice(1);
 console.log('CSV rows:', rows); // Add this line
