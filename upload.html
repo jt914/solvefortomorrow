@@ -9,7 +9,7 @@
 
     <!-- Styling -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/upload.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <!-- Fonts -->
@@ -40,48 +40,36 @@
         </div>
     </nav>
 
-    <!-- Intro section -->
-    <div class="container" id="intro-section">
-        <div class="row" id="intro-row">
-            <div class="col-xs-12 col-sm-6 col-md-8" id="intro-titlebox">
-                <h1 class="intro-box" id="page-title">InvasiGo</h1>
-                <h5 class="intro-box" id="page-subtitle"><em>Changing the world, one sighting at a time</em></h5>
-                <button type="button" class="btn intro-box" id="intro-upload">
-                    <a href="/upload.html" class="nav-link">
-                        <span class="material-symbols-outlined">add_a_photo</span>
-                        <span class="">Upload</span>
-                    </a>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Main content -->
-    <div class="container section-body" id="what-is">
-        <h1 class="section-title">What is InvasiGo?</h1>
-        <div class="section-text col-xs-12 col-sm-6 col-md-8">
-            DESCRIPTION OF APP Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta saepe nisi necessitatibus iste voluptatibus, atque suscipit. Error soluta eius omnis quo, harum distinctio optio, accusantium quaerat eligendi placeat earum qui. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore animi, ab architecto cum quam sed, error ducimus placeat vero facere corporis reiciendis commodi impedit repudiandae autem esse? Provident, nam laboriosam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ea adipisci maxime officia, necessitatibus illo cum qui est quasi asperiores odio sunt magnam beatae nisi. Iure harum voluptatum libero recusandae?
+    <div class="container section-body col-xs-12 col-sm-12 col-md-4">
+        <img src="" alt="Image preview" id="preview" class="card-img-top" style="display: none;">
+        <div class="card-body">
+            <div class="section-subtitle">Plant Identifier</div>
+            <p class="card-text">Upload an image of a plant and get its name and information.</p>
+            <div class="mb-3">
+                <input type="file" class="form-control" id="fileInput">
+            </div>
+            <!-- <button class="btn btn-primary" id="submitBtn">Identify Plant</button> -->
+            <button type="button" class="btn intro-box" id="submitBtn">
+                <span class="material-symbols-outlined" id="identify-icon">add_a_photo</span>
+                <span class="identify-text">Identify</span>
+            </button>
+            <div id="loading" class="mt-2">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="container section-body" id="components">
-        <div class="row" id="intro-row">
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <span class="col-12 big-icon material-symbols-outlined">code</span>
-                <div class="section-subtitle">Open-Source</div>
-                <div class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam illo molestiae reiciendis qui asperiores officia soluta repellat autem repudiandae iste eligendi explicabo laborum voluptate, velit nisi voluptates quis magnam possimus?</div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <span class="col-12 big-icon material-symbols-outlined">terminal</span>
-                <div class="section-subtitle">Cross-Platform Compatibiliy</div>
-                <div class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam illo molestiae reiciendis qui asperiores officia soluta repellat autem repudiandae iste eligendi explicabo laborum voluptate, velit nisi voluptates quis magnam possimus?</div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <span class="col-12 big-icon material-symbols-outlined">travel_explore</span>
-                <div class="section-subtitle">Real-Time Tracking</div>
-                <div class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam illo molestiae reiciendis qui asperiores officia soluta repellat autem repudiandae iste eligendi explicabo laborum voluptate, velit nisi voluptates quis magnam possimus?</div>
-            </div>
+    <div class="card" id="result" style="display: none;">
+        <div class="card-body">
+            <h5 class="card-title" id="plantName"></h5>
+            <p class="card-text" id="invasiveStatus"></p>
+            <p class="card-text" id="commonNames"></p>
+            <a href="#" id="wikiUrl" target="_blank" class="card-link">Read more on Wikipedia</a>
+            <p class="card-text" id="wikiDescription"></p>
         </div>
+        <script src="/js/script.js"></script>
     </div>
 
     <!-- Footer -->

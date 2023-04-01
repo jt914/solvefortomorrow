@@ -1,0 +1,59 @@
+#preview {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+#loading {
+    display: none;
+}
+
+#footer {
+    margin-top: 100px;
+}
+
+#submitBtn, #submitBtn:hover, #submitBtn:active, #submitBtn:disabled {
+    margin: 10px 25% 10px 25%;
+    width: 50%;
+    height: 80px;
+    background-color: #2a5555;
+    opacity: 0.9;
+    color: white;
+    font-size: 20px;
+}
+
+#identify-text {
+    margin: auto;
+}
+
+.section-body {
+    margin: 50px;
+    max-width: 800px;
+}
+
+.card {
+    border: none !important;
+
+}
+
+/* Medium */
+@media (min-width: 992px) {
+    .card {
+        width: 50%;
+        margin: auto 25%;
+    }
+}
+
+/* Small */
+@media (min-width: 768px) and (max-width: 991px) {
+    .card {
+        margin: 20px;
+    }
+}
+
+/* Extra small */
+@media (max-width: 767px) {
+    .card {
+        margin: 8px;
+    }
+}

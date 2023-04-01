@@ -1,0 +1,32 @@
+iframe {
+    width: 100%;
+}
+
+.section-subtitle {
+    text-align: left;
+}
+
+#mapframe {
+    margin-top: auto;
+}
+
+/* Medium */
+@media (min-width: 992px) {
+    .section-subtitle {
+        margin: 40px 10% 10% 10%;
+    }
+}
+
+/* Small */
+@media (min-width: 768px) and (max-width: 991px) {
+    .section-subtitle {
+        margin: 40px 10% 10px 10%;
+    }
+}
+
+/* Extra small */
+@media (max-width: 767px) {
+    .section-subtitle {
+        margin: 40px 10% 10px 10%;
+    }
+}

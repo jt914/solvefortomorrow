@@ -27,15 +27,15 @@ return invasiveSpecies;
 
 
 function imageToBase64(img) {
-return new Promise((resolve) => {
-const reader = new FileReader();
-reader.onload = () => {
-    preview.src = reader.result;
-    preview.style.display = "block"; // Add this line
-    resolve(reader.result.split(',')[1]);
-};
-reader.readAsDataURL(img);
-});
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            preview.src = reader.result;
+            preview.style.display = "block"; // Add this line
+            resolve(reader.result.split(',')[1]);
+        };
+        reader.readAsDataURL(img);
+    });
 }
 
 async function identifyPlant(base64Image) {
@@ -61,8 +61,6 @@ submitBtn.addEventListener('click', async () => {
         return;
     }
 
-
-
     submitBtn.disabled = true;
     loading.style.display = 'block';
 
@@ -80,29 +78,24 @@ submitBtn.addEventListener('click', async () => {
     console.log(plantData.plant_name);
 
     const invasiveSpecies = await fetchInvasiveSpecies();
-const isInvasive = invasiveSpecies.hasOwnProperty(plantData.plant_name);
-if (isInvasive) {
+    const isInvasive = invasiveSpecies.hasOwnProperty(plantData.plant_name);
 
-    const invasiveValue = invasiveSpecies[plantData.plant_name];
-    invasiveStatus.textContent = `Invasive status: ${invasiveValue}`;
-    
-const warningSign = document.createElement('span');
-warningSign.textContent = '⚠️';
-warningSign.style.fontSize = '1.5em';
+    if (isInvasive) {
+        const invasiveValue = invasiveSpecies[plantData.plant_name];
+        invasiveStatus.textContent = `Invasive status: ${invasiveValue}`;
 
-if (invasiveValue.toLowerCase() === 'low') {
-warningSign.style.color = 'yellow';
-} else if (invasiveValue.toLowerCase() === 'medium') {
-warningSign.style.color = 'orange';
-} else if (invasiveValue.toLowerCase() === 'high') {
-warningSign.style.color = 'red';
-}
+        const warningSign = document.createElement('span');
+        warningSign.textContent = '⚠️';
+        warningSign.style.fontSize = '1.5em';
 
-
-}
-else {
-    invasiveStatus.textContent = '';
-}
-
-
+        if (invasiveValue.toLowerCase() === 'low') {
+            warningSign.style.color = 'yellow';
+        } else if (invasiveValue.toLowerCase() === 'medium') {
+            warningSign.style.color = 'orange';
+        } else if (invasiveValue.toLowerCase() === 'high') {
+            warningSign.style.color = 'red';
+        }
+    }else {
+        invasiveStatus.textContent = '';
+    }
 });
